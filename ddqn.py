@@ -41,10 +41,10 @@ class ReplayBuffer():
         self.terminal_memory = np.zeros(self.mem_size, dtype=np.bool)
 
     # method to count store info in and count through various arrays
-    def store_transition(self, state, action, reward, state_, done):
+    def store_transition(self, state, action, reward, new_state, done):
         index = self.mem_cntr % self.mem_size
         self.state_memory[index] = state
-        self.new_state_memory[index] = state_
+        self.new_state_memory[index] = new_state
         self.action_memory[index] = action
         self.reward_memory[index] = reward
         self.terminal_memory[index] = done
