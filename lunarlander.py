@@ -23,10 +23,10 @@ for episode in range(n_games):
         if episode%10 == 0:
             env.render()
         action = agent.choose_action(observation)
-        observation_, reward, done, info = env.step(action)
+        next_obs, reward, done, info = env.step(action)
         score += reward
-        agent.store_transition(observation, action, reward, observation_, done)
-        observation = observation_
+        agent.store_transition(observation, action, reward, next_obs, done)
+        observation = next_obs
         agent.learn()
     scores.append(score)
     l_ep.append(episode)
